@@ -1,0 +1,38 @@
+# R
+.Rhistory
+.Rapp.history
+.RData
+.Ruserdata
+renv/library/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.env
+.venv
+venv/
+
+# LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.nav
+*.snm
+*.vrb
+
+# Outputs
+outputs/*.png
+outputs/*.pdf
+!outputs/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project
+main.tex
+main.pdf
