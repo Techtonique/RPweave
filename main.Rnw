@@ -85,60 +85,27 @@ plt.savefig('outputs/python_plot.png', dpi=150, bbox_inches='tight')
 plt.show()
 @
 
-\section{Cross-Language Integration}
-<<cross-language>>=
-# Share data from R to Python
-r_data <- data.frame(
-  category = c('A', 'B', 'C', 'D'),
-  values = c(23, 45, 56, 12)
-)
-
-# Send to Python with explicit conversion
-py_run_string("import pandas as pd")
-py$shared_data <- r_data
-cat("Data sent to Python environment\n")
+\section{Cross-Language Integration - Final}
+<<final-cross>>=
+# Send data to Python
+py$input_data <- data.frame(x = 1:5, y = c(10, 20, 15, 25, 30))
+cat("Data sent to Python\n")
 @
 
-<<python-use-r, engine='python'>>=
-print("Data received from R:")
-print(type(shared_data))
+<<python-final, engine='python'>>=
+print("Data received in Python:")
+print(input_data)
 
-# Convert to pandas DataFrame properly
-if hasattr(shared_data, 'to_pandas'):
-    df = shared_data.to_pandas()
-else:
-    df = pd.DataFrame(shared_data)
+# Process and store result back in py object
+import pandas as pd
+processed = input_data.copy()
+processed['doubled'] = processed['y'] * 2
+print("After processing:")
+print(processed)
 
-print("As DataFrame:")
-print(df)
-
-# Process in Python
-df['values_normalized'] = df['values'] / df['values'].max()
-print("\nNormalized data:")
-print(df)
-
-# Send back to R
-r.processed_data = df
-@
-
-<<r-use-python>>=
-# Use the processed data from Python
-cat("Data processed in Python and received back in R:\n")
-print(py$processed_data)
-
-# Convert to R data frame if needed
-processed_df <- py$processed_data
-if (!is.data.frame(processed_df)) {
-  processed_df <- as.data.frame(processed_df)
-}
-
-# Continue analysis in R
-final_plot <- ggplot(processed_df, aes(x = category, y = values_normalized)) +
-  geom_col(fill = 'steelblue', alpha = 0.8) +
-  ggtitle("Data Processed in Python, Visualized in R") +
-  theme_minimal()
-
-print(final_plot)
+# Store result in the shared environment
+r.output_data = processed
+print("Result stored for R")
 @
 
 \section{Conclusion}

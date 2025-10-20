@@ -59,7 +59,12 @@ quick: clean pdf view
 # Setup with traditional venv
 setup: python-setup
 	@echo "📦 Setting up R environment..."
-	Rscript -e "install.packages(c('knitr', 'reticulate', 'ggplot2'), repos='https://cloud.r-project.org')"
+	Rscript -e "\
+	pkgs <- c('knitr', 'reticulate', 'ggplot2', 'markdown', 'rmarkdown');\
+	to_install <- pkgs[!pkgs %in% installed.packages()[,'Package']];\
+	if(length(to_install)) install.packages(to_install, repos='https://cloud.r-project.org');\
+	cat('R packages ready:', paste(pkgs, collapse=', '), '\n')\
+	"
 	@echo "✅ Setup complete!"
 
 # Python setup only
