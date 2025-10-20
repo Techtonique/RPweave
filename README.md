@@ -1,8 +1,12 @@
 # RPweave
 
-Integrated R+Python+LaTeX document system using [`uv`](https://docs.astral.sh/uv/).
+Integrated R + Python + LaTeX document system using [`uv`](https://docs.astral.sh/uv/).
 
-Based on an `.Rnw` (LaTeX Sweave) file. 
+Based on an [`.Rnw`](main.Rnw) (LaTeX Sweave) files. 
+
+For more R packages, modify the [Makefile](Makefile)'s entry `setup`. 
+
+The list of Python packages must be in [requirements.txt](requirements.txt). 
 
 ## 📋 **New Paper Workflow**
 
