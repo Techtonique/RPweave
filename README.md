@@ -1,6 +1,8 @@
 # RPweave
 
-Integrated R+Python+LaTeX document system using `knitr`, `reticulate`, and `uv`.
+Integrated R+Python+LaTeX document system using [`uv`](https://docs.astral.sh/uv/).
+
+Based on an `.Rnw` (LaTeX Sweave) file. 
 
 ## 📋 **New Paper Workflow**
 
