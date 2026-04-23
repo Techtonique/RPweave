@@ -2,6 +2,8 @@
 
 Integrated R + Python + LaTeX document system using [`uv`](https://docs.astral.sh/uv/).
 
+[![Documentation](https://img.shields.io/badge/documentation-is_here-green)](https://thierrymoudiki.github.io/blog/2025/10/19/r/python/RPweave)
+
 Based on an [`.Rnw`](main.Rnw) (LaTeX Sweave) files. 
 
 For more R packages, modify the [Makefile](Makefile)'s entry `setup`. 
